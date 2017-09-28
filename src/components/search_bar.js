@@ -13,7 +13,7 @@ class SearchBar extends Component {//give it all the functionality that React.co
   constructor(props) { //all js classes have constructor. called whenever a new instance is created.
     super(props);
 
-    this.state = { term: 'Starting Value' };
+    this.state = { term: '' };
   }
 
   //every class should have a render methods
@@ -22,23 +22,23 @@ class SearchBar extends Component {//give it all the functionality that React.co
     //return <input onChange={event => console.log(event.target.value)} />;0
     return (
 
-      <div>
+      <div className="search-bar">
         <input
           value = {this.state.term}
-          onChange={event => this.setState({term: event.target.value})} />
+          onChange={event => this.onInputChange(event.target.value)} />
 
       </div>
     );
   }
   //handing events EventHandler. Detect whenever the user types
-  onInputChange(event) { // on/handle  input tag changes
+  onInputChange(term) { // on/handle  input tag changes
     //remember to pass it to the element we want to monitor
     //event.target.value has the thing in input
-    console.log(event.target.value);
+    //console.log(event.target.value);
     //console.log(event) //tells you everything in the EventHandler
 
-    this.setState({ term: event.target.value }); //USE setState. This tells react that the state changed
-
+    this.setState({ term: term }); //USE setState. This tells react that the state changed
+    this.props.onSearchTermChange(term)
   }
 
 }
