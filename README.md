@@ -3,5 +3,6 @@ Lets you search and view youtube videos
 
 Set up using 
 ```
+> npm install
 > npm start
 ```
